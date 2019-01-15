@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5423812936239440804}
   - component: {fileID: 5423812936239440805}
+  - component: {fileID: 1221315514}
   m_Layer: 0
   m_Name: Prograss Bar
   m_TagString: Untagged
@@ -47,8 +48,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackGround: {fileID: 5423812937638413999}
   BAR: {fileID: 5423812936382864953}
-  SCalex: 0
-  currentratio: 0
+--- !u!114 &1221315514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5423812936239440807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0790be78fbacbad4189db7aefda2c837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 5423812936239440805}
+  TimeinSeconds: 5
 --- !u!1 &5423812936382864953
 GameObject:
   m_ObjectHideFlags: 0
