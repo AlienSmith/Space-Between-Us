@@ -7,10 +7,11 @@ public class ProBar : MonoBehaviour
     // Start is called before the first frame update
     public GameObject BackGround;
     public GameObject BAR;
-    public float SCalex;
-    public float currentratio;
+    private float SCalex;
+    private float currentratio;
     void Start()
     {
+        Debug.Log("Started");
         SCalex = BackGround.GetComponent<Transform>().localScale.x;
         currentratio = 1.0f;
     }
