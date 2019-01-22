@@ -53,17 +53,15 @@ public class TaskManager : MonoBehaviour
     }
     //SetCurrentTask
     private void FindATask() {
-        for (int i = 0; i < count; i++) {
-            if (!Acomplished[currentTask])
-            {
-                break;
-            }
-            if (i == (count - 1)) {
-                currentTask = count - 1;
+        int firsttoken = 0;
+        while (Acomplished[firsttoken]) {
+            firsttoken++;
+            if (firsttoken == (count - 1)) {
+                currentTask = firsttoken;
                 return;
             }
         }
-        int token = Random.Range(0, count - 2);
+        int token = Random.Range(0, (count - 2));
         while (Acomplished[token]) {
             token = (token + 1) % (count - 1);
         }
