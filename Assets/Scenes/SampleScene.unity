@@ -700,26 +700,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207187109}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1429353344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2253773393210890289, guid: 0a34d88d46f2a654797aa7fcf87cd5ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 2418798136162386842}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1429353346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429353344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0790be78fbacbad4189db7aefda2c837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 2418798136162386844}
-  TimeinSeconds: 3
 --- !u!1 &1545948952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1533,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2253773392825990173, guid: 0a34d88d46f2a654797aa7fcf87cd5ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2af61347a73b70e4da1db2e63832ee50, type: 2}
+    - target: {fileID: 2253773392825990173, guid: 0a34d88d46f2a654797aa7fcf87cd5ed,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2253773392825990171, guid: 0a34d88d46f2a654797aa7fcf87cd5ed,
         type: 3}
       propertyPath: my_manager
@@ -1567,7 +1557,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb94b78470780094796c7ed161cee267, type: 2}
+      objectReference: {fileID: 2100000, guid: 841e7f000ebaf3543adaad9b0db0bb55, type: 2}
     m_RemovedComponents:
     - {fileID: 6053475429149077548, guid: 0a34d88d46f2a654797aa7fcf87cd5ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a34d88d46f2a654797aa7fcf87cd5ed, type: 3}
@@ -1583,7 +1573,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2418798136162386842}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429353344}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac3b4416f8c69845a2401af4e17a7af, type: 3}
@@ -1625,10 +1615,11 @@ MonoBehaviour:
   - {fileID: 517369249949339943}
   - {fileID: 392802194991625708}
   TimeLimits:
-  - 3
-  - 3
-  - 3
-  - 3
+  - 5
+  - 5
+  - 5
+  - 5
+  Acomplished: 00000000
   my_timer: {fileID: 2418798136162386845}
   progressBar: {fileID: 2418798136162386844}
   currentprogress: 0
