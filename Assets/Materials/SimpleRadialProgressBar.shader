@@ -10,7 +10,8 @@ Shader "AdultLink/RadialProgressBar/SimpleRadialProgressBar"
 		_Globalopacity("Global opacity", Range( 0 , 1)) = 1
 		[HDR]_Barmincolor("Bar min color", Color) = (1,0,0,1)
 		[HDR]_Barmaxcolor("Bar max color", Color) = (0,1,0.08965516,1)
-		_Rotation("Rotation", Range( 0 , 360)) = 0
+		[NoScaleOffset]_Maintex("Main tex", 2D) = "white" {}
+		_Rotation("Rotation", Range( -360 , 360)) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
@@ -34,22 +35,28 @@ Shader "AdultLink/RadialProgressBar/SimpleRadialProgressBar"
 		uniform float _Radius;
 		uniform float4 _Barmincolor;
 		uniform float4 _Barmaxcolor;
+		uniform sampler2D _Maintex;
 		uniform float _Globalopacity;
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
-			float2 temp_output_11_0 = (float2( -1,-1 ) + (i.uv_texcoord - float2( 0,0 )) * (float2( 1,1 ) - float2( -1,-1 )) / (float2( 1,1 ) - float2( 0,0 )));
+			float2 temp_output_11_0 = float2( -1,-1 ) + i.uv_texcoord * (float2( 1,1 ) - float2( -1,-1 )) / float2( 1,1 );
 			float cos251 = cos( radians( _Rotation ) );
 			float sin251 = sin( radians( _Rotation ) );
-			float2 rotator251 = mul( temp_output_11_0 - float2( 0,0 ) , float2x2( cos251 , -sin251 , sin251 , cos251 )) + float2( 0,0 );
+			float2 rotator251 = mul( temp_output_11_0,float2x2( cos251 , -sin251 , sin251 , cos251 ));
 			float2 break28 = (rotator251).xy;
+			break28.x = -break28.x;
 			float Fillpercentage140 = _Fillpercentage;
-			float ArcRange205 = (0.0 + (_Arcrange - 0.0) * (1.0 - 0.0) / (360.0 - 0.0));
-			float MainbarFillPercentage145 = ceil( ( (0.0 + (atan2( break28.y , break28.x ) - -UNITY_PI) * (1.0 - 0.0) / (UNITY_PI - -UNITY_PI)) - (1.0 + (Fillpercentage140 - 0.0) * ((1.0 + (ArcRange205 - 0.0) * (0.0 - 1.0) / (1.0 - 0.0)) - 1.0) / (1.0 - 0.0)) ) );
+			float ArcRange205 = _Arcrange /360.0;
+			//float MainbarFillPercentage145 = ceil( ( (0.0 + (atan2( break28.y , break28.x ) - -UNITY_PI) * (1.0 - 0.0) / (UNITY_PI - -UNITY_PI)) - (1.0 + (Fillpercentage140 - 0.0) * ((1.0 + (ArcRange205 - 0.0) * (0.0 - 1.0) / (1.0 - 0.0)) - 1.0) / (1.0 - 0.0)) ));
+			float MainbarFillPercentage145 = ceil((atan2(break28.y, break28.x) + UNITY_PI)  / (2*UNITY_PI) - (1.0 -ceil(Fillpercentage140 * ArcRange205*8)/8));
 			float BarRadius133 = _Radius;
 			float Length135 = length( temp_output_11_0 );
+			//float MainbarFill150 = ( MainbarFillPercentage145 * floor( ( BarRadius133 + Length135 ) ) * ( 1.0 - floor( Length135 ) ) );
 			float MainbarFill150 = ( MainbarFillPercentage145 * floor( ( BarRadius133 + Length135 ) ) * ( 1.0 - floor( Length135 ) ) );
-			float4 lerpResult6 = lerp( _Barmincolor , _Barmaxcolor , Fillpercentage140);
+
+			float4 lerpResult6 = tex2D(_Maintex,i.uv_texcoord);
+			//float4 lerpResult6 = lerp( _Barmincolor , _Barmaxcolor , Fillpercentage140);
 			float4 BarColor123 = lerpResult6;
 			float4 temp_output_39_0 = ( MainbarFill150 * BarColor123 );
 			o.Emission = temp_output_39_0.rgb;
