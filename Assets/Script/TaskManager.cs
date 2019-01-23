@@ -14,6 +14,8 @@ public class TaskManager : MonoBehaviour
     public int count;
     public bool Transition = true;
     public float delta;
+    public bool IsP1 = false;
+    public InstructionManager instructions;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,20 +31,18 @@ public class TaskManager : MonoBehaviour
         progressBar.SetProgress(progress);
     }
     private void DetactState() {
-        if (Input.GetKey(KeyCode.A) && currentTask == 0)
+        if (IsP1)
         {
-            SuccessState();
+            if (instructions.currentstate[currentTask]) {
+                SuccessState();
+                instructions.ResetInstructionP1();
+            }
         }
-        else if (Input.GetKey(KeyCode.S) && currentTask == 1) {
-            SuccessState();
-        }
-        else if (Input.GetKey(KeyCode.D) && currentTask == 2)
-        {
-            SuccessState();
-        }
-        else if (Input.GetKey(KeyCode.F) && currentTask == 3)
-        {
-            SuccessState();
+        else {
+            if (instructions.currentstate[currentTask + count]) {
+                SuccessState();
+                instructions.ResetInstructionP2();
+            }
         }
     }
     private void SuccessState() {
@@ -61,7 +61,7 @@ public class TaskManager : MonoBehaviour
                 return;
             }
         }
-        int token = Random.Range(0, (count - 2));
+        int token = Random.Range(0, count);
         while (Acomplished[token]) {
             token = (token + 1) % (count - 1);
         }

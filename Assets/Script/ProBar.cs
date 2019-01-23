@@ -29,13 +29,5 @@ public class ProBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.S)) {
-            SetProgress(currentratio + 0.01f);
-            Debug.Log("KEY S Pressed");
-        }
-        else if(Input.GetKey(KeyCode.W)&&Input.GetKey(KeyCode.A)){
-            SetProgress(currentratio - 0.01f);
-            Debug.Log("KEY A and W Pressed");
-        }
     }
 }
