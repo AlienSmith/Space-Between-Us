@@ -5,6 +5,7 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     public Renderer render;
+    public GameObject End;
     public GameObject[] SpritePlane;
     public float[] TimeLimits;
     public bool[] Acomplished;
@@ -76,6 +77,9 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Acomplished[0] && Acomplished[1] && Acomplished[2]) {
+            End.SetActive(true);
+        }
         if (Transition) {
             FindATask();
             SetTheTimer(TimeLimits[currentTask]);
