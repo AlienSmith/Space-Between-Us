@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Arcrange: 0
-    - _Fillpercentage: 1
+    - _Fillpercentage: 0
     - _Globalopacity: 1
     - _Radius: 0.25
     - _Rotation: 0

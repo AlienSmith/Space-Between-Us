@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
+    public Renderer render;
     public GameObject[] SpritePlane;
     public float[] TimeLimits;
     public bool[] Acomplished;
@@ -28,7 +29,7 @@ public class TaskManager : MonoBehaviour
         my_timer.RestTimer(timer);
     }
     private void SetprogressBar(float progress) {
-        progressBar.SetProgress(progress);
+        render.material.SetFloat("_Fillpercentage", progress);
     }
     private void DetactState() {
         if (IsP1)
